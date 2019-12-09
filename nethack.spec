@@ -4,14 +4,13 @@
 %global fontname nethack-bitmap
 
 Name:           nethack
-Version:        3.6.2
-Release:        2%{?dist}
+Version:        3.6.3
+Release:        1%{?dist}
 Summary:        A rogue-like single player dungeon exploration game
-
 
 License:        NGPL
 URL:            https://nethack.org
-Source0:        https://www.nethack.org/download/3.6.2/nethack-362-src.tgz
+Source0:        https://www.nethack.org/download/3.6.3/nethack-363-src.tgz
 Source1:        %{name}.desktop
 Patch0:         %{name}-%{version}-makefile.patch
 Patch1:         %{name}-%{version}-top.patch
@@ -48,8 +47,10 @@ Summary:        Bitmap fonts for Nethack
 BuildArch:      noarch
 Requires:       fontpackages-filesystem
 
+
 %description -n %{fontname}-fonts
 Bitmap fonts for Nethack.
+
 
 %package -n %{fontname}-fonts-core
 Summary:         X11 core fonts configuration for %{fontname}
@@ -66,7 +67,11 @@ X11 core fonts configuration for %{fontname}.
 
 
 %prep
-%setup -q
+%setup -q -c -n nethack-3.6.3
+cd NetHack-NetHack-3.6.3_Released
+mv * ..
+cd ..
+rm -rf NetHack-NetHack-3.6.3_Released
 %patch0 -b .makefile
 %patch1  
 %patch2 -b .config
@@ -169,6 +174,12 @@ fi;
 %files -n %{fontname}-fonts-core
 
 %changelog
+* Tue Aug 13 2019 Ron Olson <tachoknight@gmail.com> - 3.6.3-1
+- Update to NetHack 3.6.3
+
+* Tue Aug 13 2019 Ron Olson <tachoknight@gmail.com> - 3.6.2-3
+- Removed Group tag and clean section
+
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
