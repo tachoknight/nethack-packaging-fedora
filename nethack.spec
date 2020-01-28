@@ -16,7 +16,6 @@ Patch0:         %{name}-%{version}-makefile.patch
 Patch1:         %{name}-%{version}-top.patch
 Patch2:         %{name}-%{version}-config.patch
 Patch3:         %{name}-%{version}-guidebook.patch
-Patch4:		    winstatus.patch
 Requires:       %{fontname}-fonts-core
 
 BuildRequires:  gcc
@@ -77,7 +76,6 @@ rm -rf NetHack-NetHack-3.6.5_Released
 %patch1  
 %patch2 -b .config
 %patch3 -b .guidebook
-%patch4
 
 %{__sed} -i -e "s:PREFIX=\$(wildcard ~)/nh/install:PREFIX=/usr:" sys/unix/hints/linux
 %{__sed} -i -e "s:^\(HACKDIR=\).*:\1%{nhgamedir}:" sys/unix/hints/linux
@@ -177,7 +175,8 @@ fi;
 
 %changelog
 * Tue Jan 28 2020 Ron Olson <tachoknight@gmail.com> - 3.6.5-1
-- Update to NetHack 3.6.5
+- Update to NetHack 3.6.5 and removed gcc 10 patch because
+  the code was properly fixed upstream
 
 * Fri Jan 24 2020 Ron Olson <tachoknight@gmail.com> - 3.6.4-2
 - Added patch to compile properly with gcc 10
