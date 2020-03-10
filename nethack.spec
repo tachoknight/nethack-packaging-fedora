@@ -4,13 +4,13 @@
 %global fontname nethack-bitmap
 
 Name:           nethack
-Version:        3.6.5
+Version:        3.6.6
 Release:        1%{?dist}
 Summary:        A rogue-like single player dungeon exploration game
 
 License:        NGPL
 URL:            https://nethack.org
-Source0:        https://www.nethack.org/download/3.6.5/nethack-365-src.tgz
+Source0:        https://www.nethack.org/download/3.6.6/nethack-366-src.tgz
 Source1:        %{name}.desktop
 Patch0:         %{name}-%{version}-makefile.patch
 Patch1:         %{name}-%{version}-top.patch
@@ -67,11 +67,11 @@ X11 core fonts configuration for %{fontname}.
 
 
 %prep
-%setup -q -c -n nethack-3.6.5
-cd NetHack-NetHack-3.6.5_Released
+%setup -q -c -n nethack-3.6.6
+cd NetHack-NetHack-3.6.6_Released
 mv * ..
 cd ..
-rm -rf NetHack-NetHack-3.6.5_Released
+rm -rf NetHack-NetHack-3.6.6_Released
 %patch0 -b .makefile
 %patch1  
 %patch2 -b .config
@@ -174,6 +174,9 @@ fi;
 %files -n %{fontname}-fonts-core
 
 %changelog
+* Tue Mar 10 2020 Ron Olson <tachoknight@gmail.com> - 3.6.6-1
+- Update to NetHack 3.6.6
+
 * Tue Jan 28 2020 Ron Olson <tachoknight@gmail.com> - 3.6.5-1
 - Update to NetHack 3.6.5 and removed gcc 10 patch because
   the code was properly fixed upstream
