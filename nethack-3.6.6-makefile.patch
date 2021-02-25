@@ -9,12 +9,13 @@
  #
  #	For Bull DPX/2 systems at B.O.S. 2.0 or higher use the following:
  #
-@@ -130,7 +130,7 @@
+@@ -130,7 +130,8 @@
  # flags for Linux
  #   compile normally
  # CFLAGS = -O2 -fomit-frame-pointer -I../include
 -# LFLAGS = -L/usr/X11R6/lib
 +LFLAGS = -L/usr/X11R6/lib
++CFLAGS = -D__clang_minor__ -O2 -fomit-frame-pointer -I../include ${RPM_OPT_FLAGS}
  #   OR compile backwards compatible a.out format
  # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
  # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
@@ -70,12 +71,13 @@
  #
  #	For Bull DPX/2 systems at B.O.S. 2.0 or higher use the following:
  #
-@@ -78,7 +78,7 @@
+@@ -78,7 +78,8 @@
  # flags for Linux
  #   compile normally
  # CFLAGS = -O2 -fomit-frame-pointer -I../include
 -# LFLAGS = -L/usr/X11R6/lib
 +LFLAGS = -L/usr/X11R6/lib
++CFLAGS = -D__clang_minor__ -O2 -fomit-frame-pointer -I../include ${RPM_OPT_FLAGS}
  #   OR compile backwards compatible a.out format
  # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
  # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
