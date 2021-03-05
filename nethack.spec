@@ -5,7 +5,7 @@
 
 Name:           nethack
 Version:        3.6.6
-Release:        1%{?dist}
+Release:        4%{?dist}
 Summary:        A rogue-like single player dungeon exploration game
 
 License:        NGPL
@@ -18,6 +18,7 @@ Patch2:         %{name}-%{version}-config.patch
 Patch3:         %{name}-%{version}-guidebook.patch
 Requires:       %{fontname}-fonts-core
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:  ncurses-devel
 BuildRequires:  bison, flex, desktop-file-utils
@@ -57,7 +58,7 @@ Summary:         X11 core fonts configuration for %{fontname}
 BuildArch:      noarch
 Requires:        %{fontname}-fonts
 Requires(post):  %{fontname}-fonts
-Requires(post):  xorg-x11-font-utils
+Requires(post):  mkfontdir
 Requires(post):	 coreutils
 Requires(preun): coreutils
 
@@ -174,6 +175,15 @@ fi;
 %files -n %{fontname}-fonts-core
 
 %changelog
+* Thu Mar 04 2021 Peter Hutterer <peter.hutterer@redhat.com> 3.6.6-4
+- Require only mkfontdir, not all of xorg-x11-font-utils (#1933533)
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.6-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Tue Mar 10 2020 Ron Olson <tachoknight@gmail.com> - 3.6.6-1
 - Update to NetHack 3.6.6
 
