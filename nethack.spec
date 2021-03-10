@@ -16,6 +16,7 @@ Patch0:         %{name}-%{version}-makefile.patch
 Patch1:         %{name}-%{version}-top.patch
 Patch2:         %{name}-%{version}-config.patch
 Patch3:         %{name}-%{version}-guidebook.patch
+Patch4:         hackdir.patch
 Requires:       %{fontname}-fonts-core
 
 BuildRequires: make
@@ -25,6 +26,7 @@ BuildRequires:  bison, flex, desktop-file-utils
 BuildRequires:  bdftopcf, mkfontdir, libX11-devel, libXaw-devel, libXext-devel
 BuildRequires:  libXmu-devel, libXpm-devel, libXt-devel
 BuildRequires:  fontpackages-devel
+BuildRequires:  bdftopcf
 
 
 %description
@@ -77,6 +79,9 @@ rm -rf NetHack-NetHack-3.6.6_Released
 %patch1  
 %patch2 -b .config
 %patch3 -b .guidebook
+
+# Extra patches
+%patch4 -p1
 
 %{__sed} -i -e "s:PREFIX=\$(wildcard ~)/nh/install:PREFIX=/usr:" sys/unix/hints/linux
 %{__sed} -i -e "s:^\(HACKDIR=\).*:\1%{nhgamedir}:" sys/unix/hints/linux
