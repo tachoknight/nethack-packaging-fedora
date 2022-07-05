@@ -5,7 +5,7 @@
 
 Name:           nethack
 Version:        3.6.6
-Release:        4%{?dist}
+Release:        8%{?dist}
 Summary:        A rogue-like single player dungeon exploration game
 
 License:        NGPL
@@ -17,9 +17,10 @@ Patch1:         %{name}-%{version}-top.patch
 Patch2:         %{name}-%{version}-config.patch
 Patch3:         %{name}-%{version}-guidebook.patch
 Patch4:         hackdir.patch
+Patch5:         %{name}-%{version}-xpm.patch
 Requires:       %{fontname}-fonts-core
 
-BuildRequires: make
+BuildRequires:  make
 BuildRequires:  gcc
 BuildRequires:  ncurses-devel
 BuildRequires:  bison, flex, desktop-file-utils
@@ -82,6 +83,8 @@ rm -rf NetHack-NetHack-3.6.6_Released
 
 # Extra patches
 %patch4 -p1
+
+%patch5 -b .xpm
 
 %{__sed} -i -e "s:PREFIX=\$(wildcard ~)/nh/install:PREFIX=/usr:" sys/unix/hints/linux
 %{__sed} -i -e "s:^\(HACKDIR=\).*:\1%{nhgamedir}:" sys/unix/hints/linux
@@ -180,6 +183,19 @@ fi;
 %files -n %{fontname}-fonts-core
 
 %changelog
+* Sun Jul 03 2022 Jeff Mendoza <jlm@jlm.name> - 3.6.6-8
+- Enable build option for .xpm format support
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.6-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.6-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Mar 10 2021 Ron Olson <tachoknight@gmail.com> 3.6.6-5
+- Fixed some issues under Fedora 35 not building properly and
+  not being able to run correctly when installed
+
 * Thu Mar 04 2021 Peter Hutterer <peter.hutterer@redhat.com> 3.6.6-4
 - Require only mkfontdir, not all of xorg-x11-font-utils (#1933533)
 
