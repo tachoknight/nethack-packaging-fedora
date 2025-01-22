@@ -20,9 +20,9 @@ cp $PWD/nethack.spec $HOME/rpmbuild/SPECS
 pushd $HOME/rpmbuild/SPECS
 spectool -g -R ./nethack.spec
 # Get the dependencies
-dnf builddep -y ./nethack.spec 2>&1 | tee $MYDIR/build-output.txt
+dnf builddep -y ./nethack.spec 
 # Now do the actual build
-rpmbuild -ba ./nethack.spec
+rpmbuild -ba ./nethack.spec 2>&1 | tee $MYDIR/build-output.txt
 popd
 
 echo Started:_____$START_TS
