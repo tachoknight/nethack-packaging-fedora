@@ -76,15 +76,16 @@ cd NetHack-3.6.7
 mv * ..
 cd ..
 rm -rf NetHack-3.6.7
-%patch0 -b .makefile
-%patch1  
-%patch2 -b .config
-%patch3 -b .guidebook
+%dnl %patch0 -b .makefile
+%patch -P0 -b .makefile
+%patch -P1 -p0 
+%patch -P2 -b .config
+%patch -P3 -b .guidebook
 
 # Extra patches
-%patch4 -p1
+%patch -P4 -p1
 
-%patch5 -b .xpm
+%patch -P5 -b .xpm
 
 %{__sed} -i -e "s:PREFIX=\$(wildcard ~)/nh/install:PREFIX=/usr:" sys/unix/hints/linux
 %{__sed} -i -e "s:^\(HACKDIR=\).*:\1%{nhgamedir}:" sys/unix/hints/linux
