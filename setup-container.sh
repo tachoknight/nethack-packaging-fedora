@@ -56,7 +56,7 @@ fi
 dnf install -y the_silver_searcher tig | $LOLCAT
 
 # Now get the dependencies from the spec file
-dnf builddep -y ./swift-lang.spec | $LOLCAT
+dnf builddep -y ./nethack.spec | $LOLCAT
 
 # And we always want the line numbers in vim
 echo "set nu" > ~/.vimrc | $LOLCAT
