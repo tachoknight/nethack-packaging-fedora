@@ -5,7 +5,7 @@
 
 Name:           nethack
 Version:        3.6.7
-Release:        1%{?dist}
+Release:        7%{?dist}
 Summary:        A rogue-like single player dungeon exploration game
 
 License:        NGPL
@@ -18,6 +18,7 @@ Patch2:         %{name}-%{version}-config.patch
 Patch3:         %{name}-%{version}-guidebook.patch
 Patch4:         hackdir.patch
 Patch5:         %{name}-%{version}-xpm.patch
+Patch6:         modern_c.patch
 Requires:       %{fontname}-fonts-core
 
 BuildRequires:  make
@@ -86,6 +87,8 @@ rm -rf NetHack-3.6.7
 %patch -P4 -p1
 
 %patch -P5 -b .xpm
+
+%patch -P6 -p1
 
 %{__sed} -i -e "s:PREFIX=\$(wildcard ~)/nh/install:PREFIX=/usr:" sys/unix/hints/linux
 %{__sed} -i -e "s:^\(HACKDIR=\).*:\1%{nhgamedir}:" sys/unix/hints/linux
@@ -184,6 +187,25 @@ fi;
 %files -n %{fontname}-fonts-core
 
 %changelog
+* Wed Jan 22 2025 Ron Olson <tachoknight@gmail.com> - 3.6.7-7
+- Fixes for gcc changes
+  Resolves: rhbz#2340917
+
+* Fri Jan 17 2025 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.7-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+* Thu Jul 18 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.7-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
 * Sat Feb 18 2023 Ron Olson <tachoknight@gmail.com> - 3.6.7-1
 - Update to NetHack 3.6.7
 
